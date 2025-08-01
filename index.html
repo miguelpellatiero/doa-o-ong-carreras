@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lar Esperança - Ajudando Crianças Órfãs</title>
+    <style>
+        :root {
+            --primary: #6a5acd;
+            --primary-light: #9370db;
+            --secondary: #ffa500;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #ff8c00;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+        
+        .about {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+        
+        .about h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .about p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            width: 22%;
+            min-width: 200px;
+            margin: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .donate-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 3rem;
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .donate-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .donate-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        .payment-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-card {
+            background-color: white;
+            color: var(--dark);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 30%;
+            min-width: 250px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .payment-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .payment-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        .testimonials {
+            margin-bottom: 3rem;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .gallery {
+            margin-bottom: 3rem;
+        }
+        
+        .gallery h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(106, 90, 205, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .donation-form {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .donation-form h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            margin-right: 0.5rem;
+        }
+        
+        .donation-amounts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .amount-btn {
+            background: none;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .amount-btn:hover, .amount-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin-left: 1rem;
+            }
+            
+            .stat-card {
+                width: 45%;
+            }
+            
+            .payment-card {
+                width: 100%;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stat-card {
+                width: 100%;
+            }
+            
+            .about, .donate-section, .donation-form {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Lar Esperança</div>
+            <div class="tagline">Transformando vidas, uma doação de cada vez</div>
+            <a href="#donate" class="btn">Doe Agora</a>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-content">
+            <div class="logo-small" style="font-weight: 700; color: var(--primary);">Lar Esperança</div>
+            <ul class="nav-links">
+                <li><a href="#about">Sobre Nós</a></li>
+                <li><a href="#impact">Nosso Impacto</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <h1>Sua doação faz a diferença na vida de crianças órfãs</h1>
+            <p>A cada R$50,00 doados, garantimos alimentação, educação e cuidado para uma criança por uma semana. Juntos, podemos construir um futuro melhor.</p>
+            <a href="#donate" class="btn btn-secondary">Doe Agora</a>
+        </section>
+        
+        <section id="about" class="about">
+            <h2>Sobre Nós</h2>
+            <p>O Lar Esperança é uma organização sem fins lucrativos fundada em 2010 com o objetivo de proporcionar um lar seguro e amoroso para crianças órfãs ou em situação de vulnerabilidade. Atuamos em todo o território nacional, acolhendo e cuidando de mais de 500 crianças anualmente.</p>
+            <p>Nossa missão é garantir que cada criança tenha acesso a educação de qualidade, saúde, alimentação balanceada e, principalmente, muito amor e carinho. Acreditamos que com oportunidades iguais, essas crianças podem quebrar o ciclo de pobreza e se tornarem adultos realizados.</p>
+            <p>Atualmente, temos 12 casas-lares espalhadas pelo Brasil, cada uma proporcionando um ambiente familiar e acolhedor para até 20 crianças.</p>
+        </section>
+        
+        <section id="impact" class="stats">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Crianças Acolhidas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Casas-Lares</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Nas Escolas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Com Assistência Médica</div>
+            </div>
+        </section>
+        
+        <section id="donate" class="donate-section">
+            <h2>Faça Sua Doação</h2>
+            <p>Sua contribuição ajuda diretamente na manutenção das nossas casas-lares e no bem-estar das crianças. Todo valor doado é utilizado com transparência e responsabilidade.</p>
+            
+            <div class="payment-options">
+                <div class="payment-card">
+                    <div class="payment-icon">💰</div>
+                    <h3>PIX</h3>
+                    <p>Doe em segundos usando o PIX. Escaneie o QR Code ou use nossa chave.</p>
+                    <button class="btn" onclick="showPixModal()">Pagar com PIX</button>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">📄</div>
+                    <h3>Boleto Bancário</h3>
+                    <p>Pague em qualquer agência bancária ou internet banking.</p>
+                    <button class="btn" onclick="showBoletoModal()">Gerar Boleto</button>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">💳</div>
+                    <h3>Cartão de Crédito</h3>
+                    <p>Doe em até 12x sem juros no cartão de crédito.</p>
+                    <button class="btn" onclick="showCardModal()">Doe com Cartão</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials" class="testimonials">
+            <h2>Depoimentos</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="https://placehold.co/300x300" alt="Retrato sorridente de Ana Lúcia, mulher de 45 anos com cabelos castanhos curtos, ex-residente do Lar Esperança">
+                    <p class="testimonial-text">"Fui acolhida pelo Lar Esperança aos 10 anos e posso dizer que essa instituição mudou minha vida. Hoje sou advogada e ajudo outras crianças em situação de vulnerabilidade."</p>
+                    <div class="testimonial-author">Ana Lúcia, 28 anos</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://placehold.co/300x300" alt="Retrato de Carlos Eduardo, homem de 30 anos sorrindo com terno, ex-residente que se tornou empresário">
+                    <p class="testimonial-text">"O Lar Esperança me deu não só um teto, mas também educação e valores que carrego até hoje. Doo mensalmente como forma de retribuir tudo o que recebi."</p>
+                    <div class="testimonial-author">Carlos Eduardo, 30 anos</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://placehold.co/300x300" alt="Retrato de família com Mariana, seu marido e dois filhos, ex-residente que formou sua própria família">
+                    <p class="testimonial-text">"Quando perdi meus pais, pensei que meu mundo tinha acabado. O Lar me mostrou que ainda podia ser feliz e hoje tenho minha própria família feliz."</p>
+                    <div class="testimonial-author">Mariana, 35 anos</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="gallery">
+            <h2>Nosso Dia a Dia</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400" alt="Crianças sorrindo em sala de aula colorida com materiais didáticos espalhados">
+                    <div class="gallery-caption">Aulas e Atividades Educacionais</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400" alt="Grupo de crianças brincando em um parque ensolarado com escorregador e balanço">
+                    <div class="gallery-caption">Momento de Lazer e Brincadeiras</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400" alt="Refeição saudável servida em pratos coloridos com legumes, arroz e proteína">
+                    <div class="gallery-caption">Alimentação Saudável e Balanceada</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400" alt="Criança recebendo abraço carinhoso de cuidadora em ambiente acolhedor">
+                    <div class="gallery-caption">Ambiente Familiar e Acolhedor</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400" alt="Crianças participando de atividade artística com tinta e pincéis">
+                    <div class="gallery-caption">Atividades Artísticas e Culturais</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400" alt="Visita médica preventiva com criança sendo examinada por pediatra">
+                    <div class="gallery-caption">Acompanhamento Médico Regular</div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="donation-form">
+            <h2>Formulário de Doação</h2>
+            <form id="donationForm">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="amount">Valor da Doação (R$)</label>
+                        <input type="number" id="amount" class="form-control" min="10" step="10" value="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Opções Rápidas</label>
+                        <div class="donation-amounts">
+                            <button type="button" class="amount-btn" onclick="setAmount(30)">R$30</button>
+                            <button type="button" class="amount-btn active" onclick="setAmount(50)">R$50</button>
+                            <button type="button" class="amount-btn" onclick="setAmount(100)">R$100</button>
+                            <button type="button" class="amount-btn" onclick="setAmount(200)">R$200</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Forma de Pagamento</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="pix" name="payment" value="pix" checked>
+                            <label for="pix">PIX</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="boleto" name="payment" value="boleto">
+                            <label for="boleto">Boleto</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="card" name="payment" value="card">
+                            <label for="card">Cartão de Crédito</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="frequency">Frequência</label>
+                    <select id="frequency" class="form-control">
+                        <option value="once">Doação Única</option>
+                        <option value="monthly">Mensal</option>
+                        <option value="quarterly">Trimestral</option>
+                        <option value="yearly">Anual</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensagem (opcional)</label>
+                    <textarea id="message" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Continuar com a Doação</button>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Lar Esperança</h3>
+            <p>Transformando vidas, uma doação de cada vez</p>
+            
+            <ul class="footer-links">
+                <li><a href="#about">Sobre Nós</a></li>
+                <li><a href="#impact">Nosso Impacto</a></li>
+                <li><a href="#donate">Doe Agora</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="#">Transparência</a></li>
+            </ul>
+            
+            <div class="social-links">
+                <a href="#" class="social-link">f</a>
+                <a href="#" class="social-link">ig</a>
+                <a href="#" class="social-link">in</a>
+                <a href="#" class="social-link">yt</a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Lar Esperança. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Payment Modals -->
+    <div id="pixModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%;">
+            <h2 style="margin-bottom: 1rem; color: var(--primary);">Doação via PIX</h2>
+            <p style="margin-bottom: 1.5rem;">Escaneie o QR Code abaixo ou utilize nossa chave PIX para fazer sua doação.</p>
+            
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="https://placehold.co/300x300" alt="QR Code para doação via PIX contendo a chave pix@laresperanca.org.br" style="width: 200px; height: 200px; margin: 0 auto;">
+            </div>
+            
+            <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 5px; margin-bottom: 1.5rem; word-break: break-all;">
+                <strong>Chave PIX:</strong> <span id="pixKey">pix@laresperanca.org.br</span>
+            </div>
+            
+            <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: #666;">Sua doação será processada instantaneamente. Enviaremos um comprovante para o e-mail cadastrado.</p>
+            
+            <button onclick="closeModal('pixModal')" class="btn" style="width: 100%;">Fechar</button>
+        </div>
+    </div>
+    
+    <div id="boletoModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%;">
+            <h2 style="margin-bottom: 1rem; color: var(--primary);">Doação via Boleto</h2>
+            <p style="margin-bottom: 1.5rem;">Seu boleto foi gerado com sucesso! Você pode pagar em qualquer agência bancária ou pelo internet banking.</p>
+            
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="https://placehold.co/500x200" alt="Boleto bancário gerado com os dados do Lar Esperança e valor a ser pago" style="width: 100%; max-width: 400px;">
+            </div>
+            
+            <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 5px; margin-bottom: 1.5rem;">
+                <p style="margin-bottom: 0.5rem;"><strong>Valor:</strong> R$ <span id="boletoAmount">50,00</span></p>
+                <p style="margin-bottom: 0.5rem;"><strong>Vencimento:</strong> <span id="boletoDueDate">10/12/2023</span></p>
+                <p style="margin-bottom: 0;"><strong>Código de Barras:</strong> <span id="boletoCode">12345678901234567890123456789012345678901234</span></p>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                <button onclick="printBoleto()" class="btn btn-secondary" style="flex: 1;">Imprimir Boleto</button>
+                <button onclick="downloadBoleto()" class="btn" style="flex: 1;">Download</button>
+            </div>
+            
+            <button onclick="closeModal('boletoModal')" class="btn" style="width: 100%;">Fechar</button>
+        </div>
+    </div>
+    
+    <div id="cardModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%;">
+            <h2 style="margin-bottom: 1rem; color: var(--primary);">Doação com Cartão</h2>
+            <p style="margin-bottom: 1.5rem;">Preencha os dados do seu cartão de crédito para finalizar a doação. Sua transação é segura e criptografada.</p>
+            
+            <form id="cardForm">
+                <div class="form-group">
+                    <label for="cardNumber">Número do Cartão</label>
+                    <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cardName">Nome no Cartão</label>
+                        <input type="text" id="cardName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardCvv">CVV</label>
+                        <input type="text" id="cardCvv" class="form-control" placeholder="123" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group" style="flex: 2;">
+                        <label for="cardExpiry">Validade</label>
+                        <input type="text" id="cardExpiry" class="form-control" placeholder="MM/AA" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="cardParcel">Parcelas</label>
+                        <select id="cardParcel" class="form-control">
+                            <option value="1">1x</option>
+                            <option value="2">2x</option>
+                            <option value="3">3x</option>
+                            <option value="4">4x</option>
+                            <option value="5">5x</option>
+                            <option value="6">6x</option>
+                            <option value="12">12x</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn" style="flex: 1;">Finalizar Doação</button>
+                    <button type="button" onclick="closeModal('cardModal')" class="btn btn-secondary" style="flex: 1;">Cancelar</button>
+                </div>
+            </form>
+            
+            <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem;">
+                <img src="https://placehold.co/60x40" alt="Logo Visa" style="height: 30px;">
+                <img src="https://placehold.co/60x40" alt="Logo Mastercard" style="height: 30px;">
+                <img src="https://placehold.co/60x40" alt="Logo Elo" style="height: 30px;">
+                <img src="https://placehold.co/60x40" alt="Logo American Express" style="height: 30px;">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Set donation amount
+        function setAmount(amount) {
+            document.getElementById('amount').value = amount;
+            
+            // Update active button
+            const buttons = document.querySelectorAll('.amount-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                if (parseInt(button.textContent.replace('R$', '')) === amount) {
+                    button.classList.add('active');
+                }
+            });
+        }
+        
+        // Show PIX modal
+        function showPixModal() {
+            document.getElementById('pixModal').style.display = 'flex';
+        }
+        
+        // Show Boleto modal
+        function showBoletoModal() {
+            // Get amount from form if available
+            const amount = document.getElementById('amount') ? document.getElementById('amount').value : '50';
+            document.getElementById('boletoAmount').textContent = amount + ',00';
+            
+            // Set due date (30 days from now)
+            const dueDate = new Date();
+            dueDate.setDate(dueDate.getDate() + 30);
+            document.getElementById('boletoDueDate').textContent = dueDate.toLocaleDateString('pt-BR');
+            
+            document.getElementById('boletoModal').style.display = 'flex';
+        }
+        
+        // Show Card modal
+        function showCardModal() {
+            document.getElementById('cardModal').style.display = 'flex';
+        }
+        
+        // Close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Print boleto
+        function printBoleto() {
+            alert('Funcionalidade de impressão do boleto seria implementada aqui');
+            // In a real implementation, this would open a print dialog with the boleto
+        }
+        
+        // Download boleto
+        function downloadBoleto() {
+            alert('Download do boleto seria realizado aqui');
+            // In a real implementation, this would trigger a PDF download
+        }
+        
+        // Handle form submission
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const amount = document.getElementById('amount').value;
+            
+            if (paymentMethod === 'pix') {
+                showPixModal();
+            } else if (paymentMethod === 'boleto') {
+                showBoletoModal();
+            } else if (paymentMethod === 'card') {
+                showCardModal();
+            }
+            
+            // In a real implementation, this would submit to a backend
+            console.log('Form submitted:', {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                amount: amount,
+                paymentMethod: paymentMethod,
+                frequency: document.getElementById('frequency').value,
+                message: document.getElementById('message').value
+            });
+        });
+        
+        // Handle card form submission
+        document.getElementById('cardForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would process the payment
+            alert('Pagamento com cartão processado com sucesso! Obrigado pela sua doação.');
+            closeModal('cardModal');
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = ['pixModal', 'boletoModal', 'cardModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    closeModal(modalId);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
